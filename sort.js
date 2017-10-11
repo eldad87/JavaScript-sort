@@ -34,3 +34,15 @@ Array.prototype.selectionSort = function() {
         }
     }
 };
+
+Array.prototype.insertionSort = function() {
+    for(var i = 0; i < this.length; i++) {
+        var currentValue = this[i];
+        var backwardLookup = i;
+        while(backwardLookup > 0 && this[backwardLookup -1] > currentValue) {
+            this[backwardLookup] = this[backwardLookup -1];
+            backwardLookup--;
+        }
+        this[backwardLookup] = currentValue;
+    }
+};
