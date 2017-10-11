@@ -46,3 +46,38 @@ Array.prototype.insertionSort = function() {
         this[backwardLookup] = currentValue;
     }
 };
+
+Array.prototype.mergeSort = function() {
+    if(this.length < 2) {
+        return ;
+    }
+    var middle = Math.floor(this.length / 2);
+    var left = this.slice(0, middle);
+    var right = this.slice(middle);
+
+    function merge(arr, left, right) {
+        var arrPos = 0;
+        while(left.length && right.length) {
+            if(left[0] > right[0]) {
+                arr[arrPos] = right.shift();
+            } else {
+                arr[arrPos] = left.shift();
+            }
+            arrPos++
+        }
+        // Add remaining items
+        // Items left only in ONE of the following (and they ARE sorted):
+        while(left.length) {
+            arr[arrPos] = left.shift();
+            arrPos++
+        }
+        while(right.length) {
+            arr[arrPos] = right.shift();
+            arrPos++
+        }
+    }
+
+    left.mergeSort();
+    right.mergeSort();
+    merge(this, left, right);
+};
