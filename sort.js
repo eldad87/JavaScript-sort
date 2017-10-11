@@ -20,3 +20,17 @@ Array.prototype.bubbleSort = function() {
         }
     }
 };
+
+Array.prototype.selectionSort = function() {
+    for(var i = 0; i < this.length; i++) {
+        var minPos = i;
+        for(var z = i; z < this.length; z++) {
+            if(this[minPos] > this[z]) {
+                minPos = z;
+            }
+        }
+        if(i !== minPos) {
+            this.swap(i, minPos);
+        }
+    }
+};
