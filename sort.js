@@ -39,7 +39,9 @@ Array.prototype.insertionSort = function() {
     for(var i = 0; i < this.length; i++) {
         var currentValue = this[i];
         var backwardLookup = i;
-        while(backwardLookup > 0 && this[backwardLookup -1] > currentValue) {
+        while(backwardLookup > 0 &&
+            this[backwardLookup -1] > currentValue) {
+
             this[backwardLookup] = this[backwardLookup -1];
             backwardLookup--;
         }
@@ -66,7 +68,8 @@ Array.prototype.mergeSort = function() {
             arrPos++
         }
         // Add remaining items
-        // Items left only in ONE of the following (and they ARE sorted):
+        // Items left only in 'left' OR 'right'
+        //  and it contains sorted items:
         while(left.length) {
             arr[arrPos] = left.shift();
             arrPos++
